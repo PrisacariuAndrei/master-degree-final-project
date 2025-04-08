@@ -1,8 +1,5 @@
 import 'package:feaa/core/domain/utils/constants/app_colors.dart';
-import 'package:feaa/core/domain/utils/constants/app_text_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
 
 class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
   const TopAppBar({
@@ -22,8 +19,8 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: AppColors.background,
       surfaceTintColor: AppColors.transparent,
-      leadingWidth: 42,
-      leading: Padding(
+      leadingWidth: 300,
+/*      Padding(
         padding: const EdgeInsets.only(left: 16.0),
         child: showBackButton
             ? GestureDetector(
@@ -41,17 +38,9 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
                   BlendMode.srcIn,
                 ),
               ),
-      ),
-      centerTitle: true,
+      ),*/
+      centerTitle: false,
       title: title,
-      titleTextStyle: AppTextStyles.title3,
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(1.0),
-        child: Container(
-          color: AppColors.gray1, // Line color
-          height: 1.0, // Line thickness
-        ),
-      ),
     );
   }
 }

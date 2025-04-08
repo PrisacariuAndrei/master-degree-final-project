@@ -1,7 +1,7 @@
 import 'package:feaa/core/domain/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
-const appFontFamily = ['SegoeUI', 'Tahoma', 'Helvetica', 'Arial', 'sans-serif'];
+const appFontFamily = ['Tahoma', 'Helvetica', 'Arial', 'sans-serif'];
 
 class AppTextStyles {
   static const title1 = TextStyle(
@@ -32,6 +32,13 @@ class AppTextStyles {
     fontFamilyFallback: appFontFamily,
     fontWeight: FontWeight.w500,
     fontSize: 14,
+    color: AppColors.textColor,
+  );
+
+  static const body3 = TextStyle(
+    fontFamilyFallback: appFontFamily,
+    fontWeight: FontWeight.w500,
+    fontSize: 12,
     color: AppColors.textColor,
   );
 }

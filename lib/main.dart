@@ -3,14 +3,16 @@ import 'package:feaa/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:logging/logging.dart';
+import 'package:feaa/injection_container.dart' as di;
 
-
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
   _setupLogging();
+
+  await di.init();
   runApp(const MyApp());
 }
 
@@ -46,4 +48,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

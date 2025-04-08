@@ -1,4 +1,6 @@
-enum NavTab {home, studyPrograms, search, events, appMenu}
+enum NavTab {home, studyPrograms, appMenu}
+
+const kApiUrl = "https://www.googleapis.com/books/v1";
 
 const String kLoremIpsum =
 """
