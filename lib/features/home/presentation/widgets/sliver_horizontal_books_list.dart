@@ -7,11 +7,9 @@ import 'package:flutter/material.dart';
 class SliverHorizontalBooksList extends StatelessWidget {
   const SliverHorizontalBooksList({
     super.key,
-    required this.title,
     required this.books,
   });
 
-  final String title;
   final List<KBook> books;
 
   @override
@@ -22,19 +20,17 @@ class SliverHorizontalBooksList extends StatelessWidget {
         children: [
           if (books.isNotEmpty)
             Padding(
-              padding: const EdgeInsets.only(top: 16.0, left: 16.0),
-              child: Text(
-                title,
-                style: AppTextStyles.title2.copyWith(color: AppColors.black),
-              ),
-            ),
-          if (books.isNotEmpty)
-            SizedBox(
-              height: 290,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.5, // Adjust as needed
+                  crossAxisSpacing: 8.0,
+                  mainAxisSpacing: 8.0,
+                ),
                 itemCount: books.length,
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 itemBuilder: (context, index) => BookCard(
                   book: books[index],
                 ),

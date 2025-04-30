@@ -3,7 +3,6 @@ enum RoutePath {
   root(path: '/'),
   home(path: '/home'),
   studyPrograms(path: '/studyPrograms'),
-  announcement(path: '/announcement/:data'),
 
   // Routes with relative paths (no leading '/')
 

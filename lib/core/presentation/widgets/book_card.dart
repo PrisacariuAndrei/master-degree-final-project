@@ -48,27 +48,32 @@ class BookCard extends StatelessWidget {
       child: SizedBox(
         width: 120,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             GestureDetector(
               onTap: () {
                 onTap(context);
               },
               child: Container(
-                height: 180,
                 decoration: const BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                        color: Colors.black26, blurRadius: 2, spreadRadius: 1),
+                      color: Colors.black26,
+                      blurRadius: 2,
+                      spreadRadius: 1,
+                    ),
                   ],
                   borderRadius: BorderRadius.all(Radius.circular(4)),
                 ),
                 clipBehavior: Clip.hardEdge,
                 child: HeroWidget(
                   tag: book.id!,
-                  child: Image.network(
-                    book.volumeInfo?.imageLinks?['large'] ?? '',
-                    fit: BoxFit.fill,
+                  child: AspectRatio(
+                    aspectRatio: 4/6,
+                    child: Image.network(
+                      book.volumeInfo?.imageLinks?['large'] ?? '',
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
               ),
@@ -78,6 +83,7 @@ class BookCard extends StatelessWidget {
               book.volumeInfo?.title ?? '',
               style: AppTextStyles.body1,
               maxLines: 2,
+              textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
             ),
             if (book.volumeInfo?.authors != null)
@@ -85,6 +91,7 @@ class BookCard extends StatelessWidget {
                 (book.volumeInfo?.authors?.join(", ")).toString(),
                 style: AppTextStyles.body3,
                 maxLines: 2,
+                textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
               ),
           ],

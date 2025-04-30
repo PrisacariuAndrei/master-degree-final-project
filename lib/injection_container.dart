@@ -1,5 +1,6 @@
 import 'package:chopper/chopper.dart';
 import 'package:feaa/core/domain/utils/utils.dart';
+import 'package:feaa/features/favorite/presentation/bloc/favorite_bloc.dart';
 import 'package:feaa/features/home/data/data_sources/home_service.dart';
 import 'package:feaa/features/home/data/repositories/home_repository_impl.dart';
 import 'package:feaa/features/home/domain/repositories/home_repository.dart';
@@ -17,6 +18,9 @@ Future<void> init() async {
     () => HomeBloc(
       homeRepository: sl<HomeRepository>(),
     ),
+  );
+  sl.registerFactory(
+      ()=> FavoriteBloc(),
   );
 
   // Use cases

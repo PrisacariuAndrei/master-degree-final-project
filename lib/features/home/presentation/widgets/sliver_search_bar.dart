@@ -14,7 +14,7 @@ class SliverSearchBar extends StatefulWidget {
 }
 
 class _SliverSearchBarState extends State<SliverSearchBar> {
-  HomePageCategories selectedCategory = HomePageCategories.toate;
+  HomePageCategories selectedCategory = HomePageCategories.contabilitate;
 
   @override
   Widget build(BuildContext context) {

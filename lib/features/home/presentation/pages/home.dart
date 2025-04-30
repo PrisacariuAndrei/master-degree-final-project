@@ -16,7 +16,11 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => sl<HomeBloc>(),
+      create: (context) => sl<HomeBloc>()
+        ..add(
+          const HomeEvent.categorySelected(
+              category: HomePageCategories.contabilitate),
+        ),
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         appBar: TopAppBar(
@@ -43,8 +47,18 @@ class Home extends StatelessWidget {
                 const SliverSearchBar(),
                 BlocBuilder<HomeBloc, HomeState>(
                   builder: (context, state) {
+                    if (state.status == HomeStatus.loading) {
+                      return const SliverToBoxAdapter(
+                        child: Center(
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 64.0),
+                            child: CircularProgressIndicator(),
+                          ),
+                        ),
+                      );
+                    }
+
                     return SliverHorizontalBooksList(
-                      title: 'Carti Populare',
                       books: state.books,
                     );
                   },

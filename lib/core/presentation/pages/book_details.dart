@@ -2,7 +2,12 @@ import 'package:feaa/core/domain/entities/book.dart';
 import 'package:feaa/core/domain/utils/constants/app_colors.dart';
 import 'package:feaa/core/domain/utils/constants/app_text_styles.dart';
 import 'package:feaa/core/presentation/widgets/hero_widget.dart';
+import 'package:feaa/features/favorite/presentation/bloc/favorite_bloc.dart';
+import 'package:feaa/features/favorite/presentation/pages/favorite.dart';
+import 'package:feaa/features/favorite/presentation/pages/favorite.dart';
+import 'package:feaa/injection_container.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_html/flutter_html.dart';
 
 class BookDetails extends StatefulWidget {
@@ -44,6 +49,22 @@ class _BookDetailsState extends State<BookDetails>
             child: Stack(
               alignment: Alignment.topCenter,
               children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Container(
+                      width: 48,
+                      height: 48,
+                      margin: const EdgeInsets.only(top: 16, left: 16),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white.withOpacity(0.8),
+                      ),
+                      child: const Icon(Icons.arrow_back_ios_new_outlined),
+                    ),
+                  ),
+                ),
                 AnimatedBuilder(
                   animation: widget.offsetAnimation,
                   builder: (context, child) {
@@ -69,14 +90,31 @@ class _BookDetailsState extends State<BookDetails>
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Align(
+                          Align(
                             alignment: Alignment.centerRight,
                             child: Padding(
-                              padding: EdgeInsets.only(right: 16.0, top: 16),
-                              child: Icon(
-                                Icons.favorite_outline_rounded,
-                                size: 24,
-                                color: AppColors.textColor,
+                              padding:
+                                  const EdgeInsets.only(right: 16.0, top: 16),
+                              child: GestureDetector(
+                                onTap: () {
+                                  context.read<FavoriteBloc>().add(
+                                        FavoriteEvent.addBookToFavorite(
+                                          book: widget.book,
+                                        ),
+                                      );
+                                },
+                                child: BlocBuilder<FavoriteBloc, FavoriteState>(
+                                  builder: (context, state) {
+                                    return state.books.contains(widget.book)
+                                        ? const Icon(Icons.favorite_outlined,
+                                            size: 24, color: Colors.red,)
+                                        : const Icon(
+                                            Icons.favorite_outline_rounded,
+                                            size: 24,
+                                            color: AppColors.textColor,
+                                          );
+                                  },
+                                ),
                               ),
                             ),
                           ),
@@ -104,7 +142,7 @@ class _BookDetailsState extends State<BookDetails>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 24.0),
+                            padding: const EdgeInsets.only(top: 124.0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -202,7 +240,7 @@ class _BookDetailsState extends State<BookDetails>
                     tag: widget.book.id!,
                     child: Container(
                       width: MediaQuery.of(context).size.width - 160,
-                      height: 300,
+                      height: 400,
                       decoration: const BoxDecoration(
                         boxShadow: [
                           BoxShadow(

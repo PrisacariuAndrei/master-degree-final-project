@@ -24,11 +24,11 @@ class SpListItem extends StatelessWidget {
           children: [
             Row(
               children: [
-                Image.asset(
-                  imagePath,
-                  height: 64,
-                  width: 64,
-                ),
+                // Image.asset(
+                //   imagePath,
+                //   height: 64,
+                //   width: 64,
+                // ),
                 const SizedBox(width: 20),
                 Text(
                   title,

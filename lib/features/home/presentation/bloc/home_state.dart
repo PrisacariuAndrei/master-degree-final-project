@@ -8,7 +8,6 @@ enum HomeStatus {
 }
 
 enum HomePageCategories {
-  toate(label: 'Toate'),
   contabilitate(label: 'Contabilitate'),
   economie(label: 'Economie'),
   finanteSiBanci(label: 'Finanțe și Bănci'),
