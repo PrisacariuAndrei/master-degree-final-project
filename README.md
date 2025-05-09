@@ -56,11 +56,11 @@ Aplicația este construită în Flutter și utilizeazǎ date din Google Books AP
    ```bash
    flutter run
 
-🧑‍💻 Autor
-Prisacariu Andrei-Gheorghițǎ
+## 🧑‍💻 Autor
+**Prisacariu Andrei-Gheorghițǎ**
 
-Lucrare de disertație
+LUCRARE DE DISERTAŢIE - 2025
 
-UNIVERSITATEA “ALEXANDRU IOAN CUZA” IAŞI
-FACULTATEA DE ECONOMIE ŞI ADMINISTRAREA AFACERILOR
+UNIVERSITATEA “ALEXANDRU IOAN CUZA” IAŞI  
+FACULTATEA DE ECONOMIE ŞI ADMINISTRAREA AFACERILOR  
 SPECIALIZAREA: SISTEME INFORMAȚIONALE PENTRU AFACERI
