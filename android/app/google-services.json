@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "670146685631",
+    "firebase_url": "https://biblioteca-feaa-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "biblioteca-feaa",
+    "storage_bucket": "biblioteca-feaa.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:670146685631:android:3ab21d38b1d55f5500b40a",
+        "android_client_info": {
+          "package_name": "com.uaic.feaa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz_BqGNSsxeXGjLwU8lzIzZl6iA6ilqi0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

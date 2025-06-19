@@ -1,6 +1,8 @@
 import 'package:feaa/core/domain/utils/constants/app_colors.dart';
+import 'package:feaa/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:feaa/features/favorite/presentation/bloc/favorite_bloc.dart';
 import 'package:feaa/router/router.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +14,7 @@ Future<void> main() async {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
+  await Firebase.initializeApp();
   _setupLogging();
 
   await di.init();
@@ -30,8 +33,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => di.sl<FavoriteBloc>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => di.sl<FavoriteBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => di.sl<AuthBloc>(),
+        ),
+      ],
       child: MaterialApp.router(
         title: 'FEAA',
         routerConfig: router,

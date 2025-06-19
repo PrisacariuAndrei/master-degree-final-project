@@ -1,5 +1,6 @@
 import 'package:chopper/chopper.dart';
 import 'package:feaa/core/domain/utils/utils.dart';
+import 'package:feaa/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:feaa/features/favorite/presentation/bloc/favorite_bloc.dart';
 import 'package:feaa/features/home/data/data_sources/home_service.dart';
 import 'package:feaa/features/home/data/repositories/home_repository_impl.dart';
@@ -21,6 +22,9 @@ Future<void> init() async {
   );
   sl.registerFactory(
       ()=> FavoriteBloc(),
+  );
+  sl.registerFactory(
+        ()=> AuthBloc(),
   );
 
   // Use cases

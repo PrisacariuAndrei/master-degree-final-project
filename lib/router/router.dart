@@ -1,4 +1,6 @@
 import 'package:feaa/core/presentation/pages/nav_bar.dart';
+import 'package:feaa/features/auth/presentation/pages/login.dart';
+import 'package:feaa/features/auth/presentation/pages/register.dart';
 import 'package:feaa/features/favorite/presentation/pages/favorite.dart';
 import 'package:feaa/features/home/presentation/pages/home.dart';
 import 'package:feaa/core/presentation/pages/account_page.dart';
@@ -10,10 +12,20 @@ final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
 final ScrollController appScrollController = ScrollController();
 
 final router = GoRouter(
-  initialLocation: RoutePath.home.path,
+  initialLocation: RoutePath.login.path,
   navigatorKey: rootNavigatorKey,
   debugLogDiagnostics: true,
   routes: <RouteBase>[
+    GoRoute(
+      path: RoutePath.login.path,
+      name: RoutePath.login.name,
+      builder: (context, state) => const Auth(),
+    ),
+    GoRoute(
+      path: RoutePath.register.path,
+      name: RoutePath.register.name,
+      builder: (context, state) => const Register(),
+    ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         return NavBar(
